@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { RecipeService } from '../../../recipe.service';
-import { Recipe } from '../../../recipe.model';
+import { RecipeService } from '../../services/recipe.service';
+import { Recipe } from '../../../models/recipe.model';
 import { difficultyLevelRangeValidator } from '../../../difficulty-level.validator';
-import { Category } from '../../../category.model';
-import { CategoryService } from '../../../category.service';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-edit-recipe',

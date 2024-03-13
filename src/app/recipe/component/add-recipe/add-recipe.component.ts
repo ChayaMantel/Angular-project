@@ -2,10 +2,10 @@ import { Component,OnInit } from '@angular/core';
 import {  FormGroup, Validators,FormArray,FormControl,FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Category } from '../../../category.model';
-import { CategoryService } from '../../../category.service';
-import { Recipe } from '../../../recipe.model';
-import { RecipeService } from '../../../recipe.service';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from '../../services/category.service';
+import { Recipe } from '../../../models/recipe.model';
+import { RecipeService } from '../../services/recipe.service';
 import {  difficultyLevelRangeValidator } from '../../../difficulty-level.validator';
 import { lettersOnlyValidators } from '../../../letters-only-validator';
 

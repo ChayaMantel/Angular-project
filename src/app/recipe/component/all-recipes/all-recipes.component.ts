@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { Recipe } from '../../../recipe.model';
-import { RecipeService } from '../../../recipe.service';
-import { Category } from '../../../category.model';
-import { CategoryService } from '../../../category.service';
+import { Recipe } from '../../../models/recipe.model';
+import { RecipeService } from '../../services/recipe.service';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-all-recipes',
