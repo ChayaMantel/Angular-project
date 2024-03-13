@@ -1,14 +1,12 @@
 @import 'bootstrap/dist/css/bootstrap.min.css'; 
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-header {
-    color: #333;
-    padding: 12px;
-    text-align: center;
-    margin: 20px;
-    font-family: 'Arial', sans-serif; /* Example font family */
-    background-color: #ff5733; /* Example color */
-}
+
 
 .text-danger{
     font-size: x-small;
  }
+ 
+ h2{
+    text-align: center;
+    padding: 20px;
+  }
