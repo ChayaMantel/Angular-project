@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card shadow p-3 mb-5 bg-white rounded small-recipe" (click)="navigateToRecipeDetails()">
+    <img [src]="recipe.imageRouting" alt="Recipe Image" class="card-img-top">
+    <div class="card-body">
+      <h3 class="card-title">{{ recipe.recipeName }}</h3>
+      <p class="card-text"><b>Preparation Time:</b>{{ recipe.preparationTimeMinutes | timeconvert }} </p>
+      <p class="card-text"><b>Difficulty level: </b> {{ recipe.difficultyLevel }}</p>
+
+    </div>
+  </div>
+</div>

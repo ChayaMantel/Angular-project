@@ -1,0 +1,88 @@
+<h2>Add Recipe</h2>
+<div class="recipe-container">
+    <div class="recipe-form">
+      <form [formGroup]="recipeForm">
+        <div class="form-group">
+          <label for="recipeCode">Recipe Code</label>
+          <input type="number" id="recipeCode" formControlName="recipeCode" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['recipeCode'].errors as recipeCodeError">
+            <p *ngIf="recipeCodeError['required']" class="text-danger">Recipe Code is required!</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="recipeName">Recipe Name</label>
+          <input type="text" id="recipeName" formControlName="recipeName" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['recipeName'].errors as nameErrors">
+            <p *ngIf="nameErrors['required']" class="text-danger">Recipe Name is required!</p>
+            <p *ngIf="recipeForm.controls['recipeName'].errors['lettersOnly']" class="text-danger">Recipe must contain only letters</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" formControlName="categoryCode" class="form-control">
+            <option   *ngFor="let category of categoryList" [value]="category.code">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="preparationTimeMinutes">Preparation Time (minutes)</label>
+          <input type="number" id="preparationTimeMinutes" formControlName="preparationTimeMinutes" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['preparationTimeMinutes'].errors as preparationTimeMinutesError">
+            <p *ngIf="preparationTimeMinutesError['required']" class="text-danger">Preparation Time is required!</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="difficultyLevel">Difficulty Level</label>
+          <input type="number" id="difficultyLevel" formControlName="difficultyLevel" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['difficultyLevel'].errors as DifficultyError">
+            <p *ngIf="recipeForm.controls['difficultyLevel']" class="text-danger">Difficulty Level must be between 1 and 5!</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="dateAdded">Date Added</label>
+          <input type="date" id="dateAdded" formControlName="dateAdded" class="form-control" >
+          <ng-container *ngIf="recipeForm.controls['dateAdded'].errors as dateAddedError">
+            <p *ngIf="dateAddedError['required']" class="text-danger">Date Added is required!</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label>Ingredients</label>
+          <div formArrayName="ingredients">
+            <div *ngFor="let ingredient of ingredientsArray.controls; let i = index" class="form-group">
+              <input type="text" [formControlName]="i" (input)="addIngredient()" class="form-control"
+                *ngIf="i === ingredientsArray.length - 1 || ingredient.value.trim() !== ''">
+            </div>
+          </div>
+          <button type="button" (click)="removeEmptyIngredients()" class="btn btn-primary">Add Ingredients</button>
+        </div>
+        <div class="form-group">
+          <label>Preparation Method</label>
+          <div formArrayName="preparationMethod">
+            <div *ngFor="let step of preparationMethodArray.controls; let i = index" class="form-group">
+              <input type="text" [formControlName]="i" (input)="addPreparationStep()" class="form-control"
+                *ngIf="i === preparationMethodArray.length - 1 || step.value.trim() !== ''">
+            </div>
+          </div>
+          <button type="button" (click)="removeEmptyPreparationSteps()" class="btn btn-primary">Add Preparations</button>
+        </div>
+        <div class="form-group">
+          <label for="userCode">User Code</label>
+          <input type="number" id="userCode" formControlName="userCode" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['userCode'].errors as userCodeError">
+            <p *ngIf="userCodeError['required']" class="text-danger">User Code is required!</p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="imageRouting">Image Routing</label>
+          <input type="text" id="imageRouting" formControlName="imageRouting" class="form-control">
+          <ng-container *ngIf="recipeForm.controls['imageRouting'].errors as imageRoutingError">
+            <p *ngIf="imageRoutingError['required']" class="text-danger">Image Routing is required!</p>
+          </ng-container>
+        </div>
+        <button type="button" (click)="saveRecipe()" [disabled]="recipeForm.invalid" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+  
+  

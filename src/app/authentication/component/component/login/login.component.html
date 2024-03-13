@@ -1,0 +1,22 @@
+<div class="login-container">
+  <div class="login-form">
+    <form [formGroup]="loginForm">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" formControlName="username" class="form-control">
+        <ng-container *ngIf="loginForm.controls['username'].errors as usernameError">
+          <p *ngIf="usernameError['required']" class="text-danger">Username is required!</p>
+        </ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control">
+        <ng-container *ngIf="loginForm.controls['password'].errors as passwordError">
+          <p *ngIf="passwordError['required']" class="text-danger">Password is required!</p>
+        </ng-container>
+      </div>
+      <button type="submit" (click)="onSubmit()" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+      <div class="error-message mt-3">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

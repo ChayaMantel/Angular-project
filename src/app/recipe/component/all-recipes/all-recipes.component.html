@@ -1,0 +1,33 @@
+<div class="container mt-4">
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
+      <div class="card p-3 shadow-sm">
+        <div class="filters" [formGroup]="filterForm">
+          <label class="mb-1">Filter By:</label>
+          <input type="text" formControlName="name" class="form-control mb-2" placeholder="Name">
+         
+          <select formControlName="category" class="form-select mb-2">
+            <option value="">Select Category</option>
+            <option *ngFor="let category of categoryList" [value]="category.code">{{ category.name }}</option>
+          </select>
+
+          <select formControlName="preparationTime" class="form-select mb-2" >
+            <option value="short">Short (< 30 minutes)</option>
+            <option value="medium">Medium (30 - 60 minutes)</option>
+            <option value="long">Long (> 60 minutes)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <ng-container *ngFor="let recipe of recipeList">
+        <app-small-recipe *ngIf="applyFilters(recipe)" [recipe]="recipe"></app-small-recipe>
+      </ng-container>
+    </div>
+  </div>
+</div>
