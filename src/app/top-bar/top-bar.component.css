@@ -29,7 +29,7 @@ nav {
     background-color: #f0f0f0; /* Soft background color for links */
   }
 
-  .nav-link:hover {
+  .nav-link:hover  {
     color: #0069d9; /* Hover color */
     background-color: #e9ecef; /* Lighter background color on hover */
   }
